@@ -10,6 +10,12 @@ import com.desafioapilabs.services.UtilsService;
 @Service
 public class UtilsServiceImpl implements UtilsService{
 	
+	/**
+	 * Metodo responsavel por verificar se é obrigatorio o id 
+	 * ou não pela payload
+	 * @param String id
+	 * @param Boolean shouldBeNull
+	 */
 	@Override
 	public void idIsNull(String id, Boolean shouldBeNull) {
 		
