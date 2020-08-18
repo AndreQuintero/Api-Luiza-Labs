@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "7385257c-03bc-461e-ab0e-2027d17e088d",
+		"name": "api-luiza-labs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Access Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "apiAuthentication",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "apilabs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scopes",
+							"value": "web",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "apilabs",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "apiAuthentication",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Serviço que traz o accesstoken"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver todos os clientes",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "3867c5ac-7f9f-4551-9a60-68ee04df7b5f",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/cliente/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cliente",
+						""
+					]
+				},
+				"description": "Serviço destinado para receber uma lista de clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver cliente por id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "b8e6c373-2528-42a1-94a0-f35480acb784",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/cliente/{id}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cliente",
+						"{id}"
+					]
+				},
+				"description": "Serviço para pegar dados de um cliente pelo id dele"
+			},
+			"response": []
+		},
+		{
+			"name": "Inserir Cliente",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "b8e6c373-2528-42a1-94a0-f35480acb784",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": null,\r\n    \"nome\": \"André Quintero\",\r\n    \"email\": \"andre@teste.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cliente/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cliente",
+						""
+					]
+				},
+				"description": "Serviço destinado para cadastrar um cliente um cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Cliente",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "b8e6c373-2528-42a1-94a0-f35480acb784",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/cliente/{id}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cliente",
+						"{id}"
+					]
+				},
+				"description": "Serviço destinado para deletar cliente pelo id."
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Cliente",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "b8e6c373-2528-42a1-94a0-f35480acb784",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"5f3b43af2ef9451b03db894c\",\r\n    \"nome\": \"André Quintero\",\r\n    \"email\": \"andre@teste.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cliente/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cliente",
+						""
+					]
+				},
+				"description": "Serviço responsável por atualizar os dados de um cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Insere produto na lista de favoritos",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "3867c5ac-7f9f-4551-9a60-68ee04df7b5f",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"produtoId\": \"1\",\r\n    \"clienteId\": \"5f3b43af2ef9451b03db894c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/produto-favorito/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"produto-favorito",
+						""
+					]
+				},
+				"description": "Serviço destinado a inserir um produto na lista de favoritos do cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver Lista de favoritos do cliente",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "3867c5ac-7f9f-4551-9a60-68ee04df7b5f",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/produto-favorito/{idCliente}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"produto-favorito",
+						"{idCliente}"
+					]
+				},
+				"description": "Serviço destinado para ver a lista de produtos favoritos de um cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver lista de produtos favoritos em forma de DTO do cliente",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "3867c5ac-7f9f-4551-9a60-68ee04df7b5f",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/produto-favorito/dto/{idCliente}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"produto-favorito",
+						"dto",
+						"{idCliente}"
+					]
+				},
+				"description": "Serviço destinado para ver a lista de produtos favoritos em forma de dto do cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar produto da lista de favoritos do cliente",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "3867c5ac-7f9f-4551-9a60-68ee04df7b5f",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/produto-favorito/5f3b45942ef9451b03db894e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"produto-favorito",
+						"5f3b45942ef9451b03db894e"
+					]
+				},
+				"description": "Serviço destinado a deletar um produto da lista de favoritos do cliente"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
