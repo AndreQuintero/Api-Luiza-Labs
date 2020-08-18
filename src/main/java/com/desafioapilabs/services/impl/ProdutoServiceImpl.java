@@ -26,7 +26,11 @@ public class ProdutoServiceImpl implements ProdutoInterface{
 	@Autowired
 	RestTemplate restTemplate;
 	
-	
+	/**
+	 * Metodo responsavel por trazer um produto pelo id na api mockada do luizalabs
+	 * @param String id
+	 * @return ProdutoDTO
+	 */
 	@Override
 	public ProdutoDTO getProdutoById(String id) {
 		
