@@ -4,7 +4,7 @@ API feita para processo seletivo no Luizalabs
 
 # Configuração do Ambiente
 Para rodar o projeto é necessário ter o MongoDB rodando na porta 27017 (padrão),
-Foi utilizado Java 8 usando o SpringBoot (2.3.3.RELEASE) para rodá-los importe-o em sua IDE Java que suporte Springboot
+Foi utilizado Java 8 usando o SpringBoot (2.3.3.RELEASE) para rodar o projeto importe-o em sua IDE Java que suporte Springboot
 O projeto subirá localmente na porta 8080
 
 # Documentação
