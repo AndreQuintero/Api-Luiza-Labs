@@ -25,6 +25,10 @@ public class ClienteServiceImpl implements ServiceInterface<ClienteDTO>,
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
+	/**
+	 * Metodo de criacao/atualizacao de clientes
+	 * @param ClienteDTO
+	 */
 	@Override
 	public void createOrUpdate(ClienteDTO clienteDTO) {
 		this.camposClienteObrigatorios(clienteDTO.getNome(), clienteDTO.getEmail());
@@ -36,6 +40,10 @@ public class ClienteServiceImpl implements ServiceInterface<ClienteDTO>,
 		this.clienteRepository.save(cliente);	
 	}
 
+	/**
+	 * Metodo que busca todos os clientes
+	 * @return List<ClienteDTO>
+	 */
 	@Override
 	public List<ClienteDTO> read() {
 		List<ClienteDTO> dto = new ArrayList<ClienteDTO>();
@@ -47,6 +55,10 @@ public class ClienteServiceImpl implements ServiceInterface<ClienteDTO>,
 		return dto;
 	}
 
+	/**
+	 * Metodo que busca um cliente pelo id
+	 * @param String id
+	 */
 	@Override
 	public ClienteDTO readById(String id) {
 		Optional<Cliente> cliente = this.clienteRepository.findById(id);
@@ -56,6 +68,10 @@ public class ClienteServiceImpl implements ServiceInterface<ClienteDTO>,
 		return null;
 	}
 
+	/**
+	 * Metodo que deleta um cliente por id
+	 * @param String id
+	 */
 	@Override
 	public void delete(String id) {
 	
@@ -68,6 +84,11 @@ public class ClienteServiceImpl implements ServiceInterface<ClienteDTO>,
 	}
 
 
+	/**
+	 * Metodo que valida se os itens da payload vieram preenchidos
+	 * @param String nome
+	 * @param String email
+	 */
 	@Override
 	public void camposClienteObrigatorios(String nome, String email) {
 		
@@ -77,6 +98,10 @@ public class ClienteServiceImpl implements ServiceInterface<ClienteDTO>,
 		
 	}
 
+	/**
+	 * Valida se há algum cliente com o email que o cliente deseja usar
+	 * @param ClienteDTO cliente
+	 */
 	private void validateEmail(ClienteDTO cliente) {
 		Cliente clientePersisted = this.clienteRepository.findByEmail(cliente.getEmail());
 		if(clientePersisted != null && !clientePersisted.getId().equals(cliente.getId())) {
