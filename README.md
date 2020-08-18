@@ -9,7 +9,7 @@ O projeto subirá localmente na porta 8080
 
 # Documentação
 Foi criado um swagger para a documentação da API podendo ser acessado em: localhost:8080/swagger-ui.html?configUrl=/v3/api-docs/swagger-config
-Entretando não foi possível usá-lo devido a problemas de integração entre o Swagger e o oAuth2, para isto, foi criado uma collection do Postman que esta 
+Entretanto não foi possível usá-lo devido a problemas de integração entre o Swagger e o oAuth2, para isto, foi criado uma collection do Postman que esta 
 disponível em src/main/resources/collection para ser importado no Postman com os endpoints já pré-configurados.
 
 # Autenticação e Autorização
