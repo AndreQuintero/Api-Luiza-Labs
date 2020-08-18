@@ -42,7 +42,6 @@ public class ClienteController {
 	@GetMapping(value="/{id}")
 	public ResponseEntity<ClienteDTO> getByClienteId(@PathVariable String id){
 		ClienteDTO dto = this.clienteService.readById(id);
-		// TODO: DAR NOT-FOUND
 		return ResponseEntity.ok(dto);
 	}
 	
