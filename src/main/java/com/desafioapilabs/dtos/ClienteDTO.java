@@ -14,6 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ClienteDTO {
 	
+	// Por mais que seja igual a classe Cliente (Entity) resolvi separar um DTO caso hipoteticamente houvessem dados que não deveriam ser passados
+
 	@Field("id")
 	private String id;
 	
