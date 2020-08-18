@@ -14,7 +14,7 @@ disponível em src/main/resources/collection para ser importado no Postman com o
 
 # Autenticação e Autorização
 Para os endpoints da aplicação é necessário um Bearer Token, este pode ser adquirido no endpoint da Collection Get Access Token
-é necessário fazer a requisição do serviço desta collection para se obter o acess_token, após isso, deve-se usar o access_token na parte de Authorization com o Type OAuth 2.0 (ou Bearer Token).
+é necessário fazer a requisição do serviço desta collection para se obter o acess_token, após isso, deve-se usar o access_token na parte de Authorization com o Type OAuth 2.0 (ou Bearer Token) em todas as requests da API.
 
 
 # Testes
