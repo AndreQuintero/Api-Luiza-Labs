@@ -35,6 +35,11 @@ public class ProdutoFavoritoServiceImpl implements ServiceInterface<ProdutoFavor
 	@Autowired
 	ProdutoFavoritoRepository produtoRepository;
 	
+	/**
+	 * Metodo responsavel por criar ou atualizar um produto 
+	 * favorito para determinado cliente
+	 * @param ProdutoFavoritoDTO dto
+	*/
 	@Override
 	public void createOrUpdate(ProdutoFavoritoDTO dto) {
 		this.camposObrigatorios(dto.getProdutoId(), dto.getClienteId());
@@ -62,6 +67,10 @@ public class ProdutoFavoritoServiceImpl implements ServiceInterface<ProdutoFavor
 		return null;
 	}
 
+	/**
+	 * Metodo responsavel por deletar um produto da lista de favoritos
+	 * @param String id
+	 */
 	@Override
 	public void delete(String id) {
 		ResponseProdutoFavoritoDTO dto = this.findByProdutoFavoritoId(id);
@@ -74,7 +83,12 @@ public class ProdutoFavoritoServiceImpl implements ServiceInterface<ProdutoFavor
 
 
 	
-
+	/**
+	 * Metodo resposavel por validar a payload para 
+	 * inserção de um produto na lista de favoritos
+	 * @param String produtoId
+	 * @param String clienteId
+	 */
 	@Override
 	public void camposObrigatorios(String produtoId, String clienteId) {
 		if(produtoId == null || clienteId == null) {
@@ -83,17 +97,33 @@ public class ProdutoFavoritoServiceImpl implements ServiceInterface<ProdutoFavor
 		
 	}
 
+	/**
+	 * Metodo responsavel por buscar a lista de produtos 
+	 * favoritos de determinado cliente
+	 * @param String clienteId
+	 * @return List<ProdutoDTO>
+	 */
 	@Override
 	public List<ProdutoDTO> findByClienteId(String clienteId) {
 		Stream<ProdutoFavorito> favoritos = this.produtoRepository.findByClienteId(clienteId);
 		return this.getProdutoDTO(favoritos).collect(Collectors.toList());
 	}
 
+	/**
+	 * Transforma um Stream de produto favorito em um Stream de ProdutoDTO
+	 * @param Stream<ProdutoFavorito> favoritos
+	 * @return Stream<ProdutoDTO>
+	 */
 	private Stream<ProdutoDTO> getProdutoDTO(Stream<ProdutoFavorito> favoritos){
 			return favoritos.
 					map( produtoFav -> produtoFav.getProdutoFavorito() );
 	}
 
+	/**
+	 * Metodo responsavel por buscar um produto favorito pelo id.
+	 * @param String id
+	 * @return ResponseProdutoFavoritoDTO
+	 */
 	@Override
 	public ResponseProdutoFavoritoDTO findByProdutoFavoritoId(String id) {
 		Optional<ProdutoFavorito> favorito = this.produtoRepository.findById(id);
@@ -108,6 +138,12 @@ public class ProdutoFavoritoServiceImpl implements ServiceInterface<ProdutoFavor
 		return null;
 	}
 
+	/**
+	 * Metodo reponsavel por buscar uma lista de produtos 
+	 * favorito por cliente em forma de dto
+	 * @param String clienteId
+	 * @return List<ResponseProdutoFavoritoDTO>
+	*/
 	@Override
 	public List<ResponseProdutoFavoritoDTO> findDTOByClienteId(String clienteId) {
 		Stream<ProdutoFavorito> favoritos = this.produtoRepository.findByClienteId(clienteId);
@@ -122,6 +158,11 @@ public class ProdutoFavoritoServiceImpl implements ServiceInterface<ProdutoFavor
 		return responseList;
 	}
 
+	/**
+	 * Metodo responsavel por verificar se há um produto que já está na 
+	 * lista de favoritos por parte do cliente
+	 * @param Integer total
+	 */
 	@Override
 	public void produtoExiste(Integer total) {
 		
